@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-        serverActions: true,
-        serverComponentsExternalPackages:['mongoose','@typegoose/typegoose']
-    }, 
-}
+  experimental: {
+    serverActions: true,
+    serverComponentsExternalPackages: ["mongoose", "@typegoose/typegoose"],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

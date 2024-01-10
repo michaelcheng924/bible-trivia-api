@@ -41,6 +41,7 @@ async function connectDB() {
         return mongoose;
       })
       .catch((error) => {
+        console.log("=====", error, MONGODB_URI);
         console.error("❌ Connection to database failed");
         throw error;
       });

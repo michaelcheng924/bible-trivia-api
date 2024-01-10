@@ -1,21 +1,24 @@
-import TodoFormServerComponent from "@/components/todo-form-server";
-import TodoItemServerComponent from "@/components/todo-item-server";
-import { getTodos } from "@/lib/todo-db";
+import { getTrivia, addOneToCompletedCount } from "@/lib/trivia-db";
 
 export default async function Home() {
-  const { todos, results } = await getTodos();
+  const { trivia } = await getTrivia();
+  console.log("=====", trivia);
+
+  async function action(data: FormData) {
+    "use server";
+
+    const title = data.get("title");
+    if (!title || typeof title !== "string") {
+      return;
+    }
+
+    // call server action
+    await addOneToCompletedCount();
+  }
 
   return (
-    <div className="container mx-auto max-w-md p-4">
-      <TodoFormServerComponent />
-      <h1 className="text-2xl font-bold mb-4">Todo List</h1>
-      {results === 0 ? (
-        <p className="text-center">No Todos Found</p>
-      ) : (
-        todos?.map((todo) => (
-          <TodoItemServerComponent key={todo.id} todo={todo} />
-        ))
-      )}
+    <div>
+      <button onClick={action}>ADD</button>
     </div>
   );
 }
