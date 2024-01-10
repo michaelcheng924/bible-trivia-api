@@ -1,11 +1,11 @@
 import { Trivia } from "@/models/Trivia";
 import connectDB from "./connect-db";
 
-export async function getTrivia(slug: string) {
+export async function getTrivia() {
   try {
     await connectDB();
 
-    const trivia = await Trivia.find({ slug }).exec();
+    const trivia = await Trivia.find().exec();
 
     return {
       trivia,

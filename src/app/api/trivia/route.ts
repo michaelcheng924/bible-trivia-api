@@ -1,12 +1,9 @@
 import { getTrivia } from "@/lib/trivia-db";
 import { NextRequest } from "next/server";
 
-export async function GET(request: NextRequest) {
-  const url = new URL(request.url);
-  const slug = url.searchParams.get("slug") || "";
+export async function GET() {
+  const { trivia } = await getTrivia();
 
-  const { trivia } = await getTrivia(slug);
-  console.log("=====", trivia);
   return new Response(JSON.stringify(trivia), {
     status: 200,
     headers: {
