@@ -6,8 +6,8 @@ export async function GET(request: NextRequest) {
   const slug = url.searchParams.get("slug") || "";
 
   const { trivia } = await getTrivia(slug);
-
-  return Response.json(trivia, {
+  console.log("=====", trivia);
+  return new Response(JSON.stringify(trivia), {
     status: 200,
     headers: {
       "Access-Control-Allow-Origin": "*",

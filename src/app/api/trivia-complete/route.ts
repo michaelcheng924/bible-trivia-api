@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
 
   const { trivia } = await addOneToCompletedCount(slug);
 
-  return Response.json(trivia, {
+  return new Response(JSON.stringify(trivia), {
     status: 200,
     headers: {
       "Access-Control-Allow-Origin": "*",
