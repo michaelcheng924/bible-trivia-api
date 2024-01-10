@@ -1,5 +1,4 @@
 import { getTrivia } from "@/lib/trivia-db";
-import { NextRequest } from "next/server";
 
 export async function GET() {
   const { trivia } = await getTrivia();
